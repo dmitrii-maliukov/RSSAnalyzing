@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+	<channel>
+		<title>Example Feed</title>
+		<link>https://github.com/bcomedian/RSSAnalyzing</link>
+		<description>This RSS feed example was created for testing purposes</description>
+		<item>
+			<title>Very important event</title>
+			<link>https://github.com/bcomedian/RSSAnalyzing</link>
+			<description>It's really important event, I'm not kidding</description>
+			<pubDate>Sat, 07 May 2018 13:30:00 GMT</pubDate>
+		</item>
+		<item>
+			<title>Not so important event</title>
+			<link>https://github.com/bcomedian/RSSAnalyzing</link>
+			<description>It's not important at all</description>
+			<pubDate>Fri, 08 May 2018 12:31:00 GMT</pubDate>
+		</item>
+	</channel>
+</rss>

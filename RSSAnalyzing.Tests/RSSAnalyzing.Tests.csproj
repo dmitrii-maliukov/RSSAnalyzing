@@ -13,4 +13,17 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RSSAnalyzing\RSSAnalyzing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="RssExample_NotOlder2Days.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RssExample_Older2Days.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
