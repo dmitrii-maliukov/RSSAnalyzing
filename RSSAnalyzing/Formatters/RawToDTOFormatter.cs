@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace RSSAnalyzing
+namespace RSSAnalyzing.Formatters
 {
     public class RawToDTOFormatter
 	{

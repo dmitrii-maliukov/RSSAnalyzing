@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xunit;
 using RSSAnalyzing.DTOs;
 using Microsoft.SyndicationFeed;
+using RSSAnalyzing.Algorithms;
 
 namespace RSSAnalyzing.Tests
 {

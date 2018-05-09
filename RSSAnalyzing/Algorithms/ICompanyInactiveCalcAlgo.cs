@@ -1,7 +1,7 @@
 ﻿using RSSAnalyzing.DTOs;
 using System.Collections.Generic;
 
-namespace RSSAnalyzing
+namespace RSSAnalyzing.Algorithms
 {
 	public interface ICompanyInactiveCalcAlgo
 	{

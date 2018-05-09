@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RSSAnalyzing.DTOs;
 
-namespace RSSAnalyzing
+namespace RSSAnalyzing.Algorithms
 {
 	public class CompanyInactiveCalculator : ICompanyInactiveCalcAlgo
 	{
