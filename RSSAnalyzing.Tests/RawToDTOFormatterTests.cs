@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
-using RSSAnalyzing;
 using System.Threading.Tasks;
 using System.Net;
 using System.Linq;
 using System.IO;
 using RSSAnalyzing.Formatters;
+using System.Xml;
 
 namespace RSSAnalyzing.Tests
 {
@@ -68,7 +67,25 @@ namespace RSSAnalyzing.Tests
 		}
 
 		[Fact]
-		public async Task CompaniesURIs_UsualHandling()
+		public void CompaniesURIs_InvalidXml()
+		{
+			// Arrange
+			var inputValues = new Dictionary<string, Uri>()
+			{
+				{ "FirstCompany", new Uri("https://www.dropbox.com/s/4rwsu8goeq7zx1h/bbc_world.xml?dl=1") },
+				{ "SecondCompany", new Uri("https://www.dropbox.com/s/acypcml3d89v38i/bbc_world_addition.xml?dl=1") },
+				{ "ErrorCompany", new Uri("https://www.dropbox.com/s/enthqc1pvfz8t8e/bbc_world_error.xml?dl=1") }
+			};
+
+			// Act
+			Func<Task> act = () => RawToDTOFormatter.Format(inputValues);
+
+			// Assert
+			Assert.ThrowsAsync<XmlException>(act);
+		}
+
+		[Fact]
+		public async Task CompaniesURIs_TwoCompaniesWith4And11Items()
 		{
 			// Arrange
 			var inputValues = new Dictionary<string, Uri>()
@@ -124,7 +141,29 @@ namespace RSSAnalyzing.Tests
 		}
 
 		[Fact]
-		public async Task CompaniesXMLs_UsualHandling()
+		public void CompaniesXMLs_InvalidXml()
+		{
+			// Arrange
+			var exampleXmlNotOlder2Days = File.ReadAllText("RssExample_NotOlder2Days.xml");
+			var exampleXmlOlder2Days = File.ReadAllText("RssExample_Older2Days.xml");
+			var exampleXmlInvalid = File.ReadAllText("RssExample_Invalid.xml");
+
+			var inputValues = new Dictionary<string, string>()
+			{
+				{ "FirstCompany", exampleXmlNotOlder2Days },
+				{ "SecondCompany", exampleXmlOlder2Days },
+				{ "ErrorCompany", exampleXmlInvalid }
+			};
+
+			// Act
+			Func<Task> act = () => RawToDTOFormatter.Format(inputValues);
+
+			// Assert
+			Assert.ThrowsAsync<XmlException>(act);
+		}
+
+		[Fact]
+		public async Task CompaniesXMLs_TwoCompaniesWith3And2Items()
 		{
 			// Arrange 
 			var exampleXmlNotOlder2Days = File.ReadAllText("RssExample_NotOlder2Days.xml");
@@ -141,7 +180,7 @@ namespace RSSAnalyzing.Tests
 			// Assert
 			var itemsCountNotOlder = result.First(x => x.Company == "FirstCompany").Feed.Count();
 			var itemsCountOlder = result.First(x => x.Company == "SecondCompany").Feed.Count();
-			Assert.True(itemsCountNotOlder == 2 && itemsCountOlder == 2);
+			Assert.True(itemsCountNotOlder == 3 && itemsCountOlder == 2);
 		}
 		#endregion
 	}

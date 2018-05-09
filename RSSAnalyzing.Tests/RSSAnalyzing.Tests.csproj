@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="RssExample_Invalid.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RssExample_NotOlder2Days.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
