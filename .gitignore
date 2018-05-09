@@ -1,0 +1,4 @@
+*.suo
+.vs/
+RSSAnalyzing.Tests/obj/
+RSSAnalyzing/obj/
